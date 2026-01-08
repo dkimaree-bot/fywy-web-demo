@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FYWY WiFi & Cable - Reliable Internet for Our Community</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green: #3D5A58;
+      --green-bright: #4FAF9A;
+      --navy: #1E2A2A;
+      --light-bg: #F5F5F5;
+      --dark-text: #1E2A2A;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--light-bg);
+      color: var(--dark-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-top: 70px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Hero headline uses Rubik */
+    .hero-text h1 {
+      font-family: 'Rubik', sans-serif;
+    }
+
+    /* SMOOTH SCROLL */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, var(--green) 0%, #2d4543 100%);
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    header.hidden {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    nav {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Rubik', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 1px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green-bright);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green-bright) 0%, #5fd4b8 100%);
+      color: var(--navy);
+      box-shadow: 0 8px 25px rgba(79, 175, 154, 0.4);
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(79, 175, 154, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.7);
+      backdrop-filter: blur(5px);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--green) 50%, #2d4543 100%);
+      padding: 6rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+     background: 
+  radial-gradient(circle at 20% 50%, rgba(79, 175, 154, 0.08) 0%, transparent 50%),
+  radial-gradient(circle at 80% 80%, rgba(14, 26, 36, 0.1) 0%, transparent 50%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('DSC_0010.jpg') center/cover;
+      opacity: 0.35;
+      mix-blend-mode: overlay;
+    }
+
+    .hero-content {
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(135deg, var(--green-bright) 0%, #5fd4b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-text p {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    /* AVAILABILITY CHECKER */
+    .availability-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .availability-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .availability-box h3 {
+      color: var(--white);
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      font-weight: 800;
+    }
+
+    .availability-box input {
+      width: 100%;
+      padding: 1.15rem 1.5rem;
+      border: none;
+      border-radius: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      background: var(--white);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .availability-box input:focus {
+      outline: none;
+      box-shadow: 0 4px 20px rgba(79, 175, 154, 0.3);
+    }
+
+    .availability-box button {
+      width: 100%;
+    }
+
+    /* QUICK LINKS BAR (replacing stats) */
+    .quick-links-bar {
+      background: var(--navy);
+      padding: 2rem 2rem;
+    }
+
+    .quick-links-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .quick-link-item {
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem 2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .quick-link-item:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--green-bright);
+      transform: translateY(-5px);
+    }
+
+    .quick-link-item a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      display: block;
+    }
+
+ /* BENEFITS SECTION */
+.benefits {
+  padding: 5rem 2rem;
+  background: var(--white);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--dark-text);
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: rgba(30, 42, 42, 0.7);
+}
+
+.benefits-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.benefit-card {
+  background: linear-gradient(135deg, var(--green) 0%, var(--navy) 100%);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  color: var(--white);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(79, 175, 154, 0.2) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(61, 90, 88, 0.4);
+}
+
+.benefit-card:hover::before {
+  opacity: 1;
+}
+
+.benefit-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.benefit-card p {
+  opacity: 0.9;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+    /* PLANS SECTION */
+    .plans {
+      padding: 5rem 2rem;
+      background: var(--light-bg);
+    }
+
+    .plans-grid {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .plan-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      position: relative;
+      border: 2px solid transparent;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+      border-color: var(--green-bright);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -15px;
+      right: 2rem;
+      background: linear-gradient(135deg, var(--green-bright) 0%, #5fd4b8 100%);
+      color: var(--dark-text);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(79, 175, 154, 0.3);
+    }
+
+    .plan-card h3 {
+      font-size: 1.8rem;
+      color: var(--dark-text);
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .plan-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.75rem;
+    }
+
+    .plan-price span {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: rgba(30, 42, 42, 0.5);
+    }
+
+    .plan-features {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .plan-features li {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(30, 42, 42, 0.06);
+      color: rgba(30, 42, 42, 0.75);
+      font-size: 1rem;
+    }
+
+    .plan-features li:last-child {
+      border-bottom: none;
+    }
+
+    /* IMAGE SECTIONS */
+    .image-section {
+      padding: 5rem 2rem;
+      background: var(--white);
+    }
+
+    .image-section.alt-bg {
+      background: var(--light-bg);
+    }
+
+    .image-content {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* LARGE IMAGE WITH OVERLAY TEXT */
+    .image-content.large-image {
+      grid-template-columns: 1fr;
+      position: relative;
+    }
+
+    .large-image-box {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 500px;
+    }
+
+    .large-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 28px;
+    }
+
+    .image-overlay-text {
+      position: absolute;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(14, 26, 36, 0.85);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      max-width: 450px;
+      color: var(--white);
+    }
+
+    .image-overlay-text h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+    }
+
+    .image-overlay-text p {
+      font-size: 1rem;
+      opacity: 0.9;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .image-overlay-text ul {
+      list-style: none;
+    }
+
+    .image-overlay-text ul li {
+      padding: 0.7rem 0;
+      font-size: 0.95rem;
+      opacity: 0.9;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .image-overlay-text ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green-bright);
+      font-weight: 900;
+      font-size: 1.3rem;
+    }
+
+    /* SMALL IMAGE LEFT, TEXT RIGHT */
+    .image-content.small-left {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .image-box img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+    }
+
+    .text-box h3 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--dark-text);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .text-box p {
+      font-size: 1.1rem;
+      color: rgba(30, 42, 42, 0.7);
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+
+    .text-box ul {
+      list-style: none;
+      margin: 2rem 0;
+    }
+
+    .text-box ul li {
+      padding: 0.8rem 0;
+      font-size: 1.05rem;
+      color: rgba(30, 42, 42, 0.75);
+      position: relative;
+      padding-left: 2.5rem;
+    }
+
+    .text-box ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green-bright);
+      font-weight: 900;
+      font-size: 1.5rem;
+    }
+
+    /* THIRD LAYOUT: IMAGE RIGHT, TEXT LEFT */
+    .image-content.reverse {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+       /* COMBINED TEAM + SETUP SECTION */
+.team-setup-section {
+  padding: 5rem 2rem;
+  background: url('DSC_0086.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.team-setup-container {
+  max-width: 1600px;  /* Changed from 1200px */
+  margin: 0 auto;
+}
+
+    .section-intro {
+      max-width: 700px;
+      margin-bottom: 4rem;
+    }
+
+.section-intro h2 {
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: var(--white);  /* ← Changed to white */
+  margin-bottom: 1.5rem;
+  line-height: 1.05;
+}
+
+.section-intro h2 span {
+  color: var(--green-bright);  /* ← Stays green */
+}
+
+.section-intro p {
+  font-size: 1.15rem;
+  color: var(--white);  /* ← Changed to white */
+  line-height: 1.8;
+}
+
+
+ .two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: none;  /* Remove the 1400px limit */
+  margin: 0 auto;
+}
+
+    /* LEFT BOX - TEAM CARD */
+    .team-card {
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+      border: 2px solid rgba(30, 42, 42, 0.08);
+    }
+
+.team-image {
+  width: 100%;
+  height: 380px;  /* ← Much taller now! */
+  background: linear-gradient(135deg, var(--green) 0%, var(--navy) 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* Shows full image, might have letterboxing */
+  object-position: center;
+}
+
+.team-emoji {
+  font-size: 9rem;  /* ← Bigger to match */
+  opacity: 0.3;
+}
+
+    .team-content {
+  padding: 1.5rem 2rem;  /* ← Less vertical padding */
+}
+
+    .team-content h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .team-content p {
+      font-size: 1rem;
+      color: rgba(30, 42, 42, 0.75);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .team-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .badge {
+      background: rgba(61, 90, 88, 0.1);
+      color: var(--green);
+      padding: 0.6rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* RIGHT BOX - SETUP PROCESS */
+   .setup-card {
+  background: var(--navy);
+  border-radius: 24px;
+  padding: 1.75rem 2rem;  /* ← Less vertical padding */
+  color: var(--white);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+}
+    .setup-card h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--green-bright);
+    }
+
+    .setup-steps {
+      list-style: none;
+      counter-reset: step-counter;
+      margin-bottom: 2.5rem;
+    }
+
+  .setup-steps li {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.9);
+}
+
+    .setup-steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--green-bright);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: var(--navy);
+      font-size: 1rem;
+    }
+
+    .setup-steps strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+ .timeline {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+    .timeline h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-bright);
+      margin-bottom: 1.25rem;
+    }
+
+.timeline-item {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+    .timeline-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .timeline-day {
+      font-weight: 700;
+      color: var(--green-bright);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .timeline-desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+  background: linear-gradient(135deg, var(--navy) 0%, #1a2d38 100%);
+      color: var(--white);
+      padding: 5rem 2rem 2rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green-bright), transparent);
+    }
+
+    .footer-content {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-logo {
+      font-family: 'Rubik', sans-serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--green-bright);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-section h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 1rem;
+    }
+
+    .footer-section a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-section a:hover {
+      color: var(--green-bright);
+      transform: translateX(5px);
+    }
+
+    .footer-bottom {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 968px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-links-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .plans-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .image-content.small-left,
+      .image-content.reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .image-overlay-text {
+        position: static;
+        transform: none;
+        margin-top: 2rem;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .quick-links-container {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
+  <img src="your-logo.png" alt="FYWY Logo" style="height: 50px; width: auto;">
+</a>
+      <div class="nav-links">
+      <a href="plans.html">Plans</a>
+<a href="terms.html">Terms and Conditions</a>
+        <a href="#support">Payment</a>
+        <a href="contact.html">Contact</a>
+        <a href="#apply" class="btn btn-primary">Apply Now</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Strong, steady <span>WiFi & Cable</span>, built for our community.</h1>
+        <p>Fast, reliable service with local support and clear pricing. Get connected without the stress of confusing contracts or hidden fees.</p>
+        <div class="hero-ctas">
+          <a href="#apply" class="btn btn-primary">Apply Now</a>
+          <a href="#coverage" class="btn btn-outline">Make Payment</a>
+        </div>
+      </div>
+      <div class="availability-box fade-in delay-1">
+        <h3>Check Coverage</h3>
+        <input type="text" placeholder="Enter your address">
+        <button class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS BAR -->
+  <section class="quick-links-bar">
+    <div class="quick-links-container">
+      <div class="quick-link-item fade-in">
+        <a href="#payment">Check Coverage</a>
+      </div>
+      <div class="quick-link-item fade-in delay-2">
+        <a href="plans.html">Services</a>
+      </div>
+      <div class="quick-link-item fade-in delay-3">
+        <a href="contact.html">Report Issues</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <div class="section-header fade-in">
+      <h2>Why choose FYWY?</h2>
+      <p>We're not just another internet provider — we're your neighbors building better connections.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-in">
+        <h3>No Hidden Fees</h3>
+        <p>Clear, straightforward pricing with no surprise charges. What you see is what you pay — every single month.</p>
+      </div>
+      <div class="benefit-card fade-in delay-1">
+        <h3>Local Support</h3>
+        <p>Talk to real people who live and work in your community. No endless phone menus or overseas call centers.</p>
+      </div>
+      <div class="benefit-card fade-in delay-2">
+        <h3>Fast Installation</h3>
+        <p>Get connected in days, not weeks. Our local technicians make setup quick and painless.</p>
+      </div>
+      <div class="benefit-card fade-in delay-3">
+        <h3>Growing Coverage</h3>
+        <p>We're expanding service to more neighborhoods every year, bringing reliable internet where it's needed most.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section class="plans" id="plans">
+    <div class="section-header fade-in">
+      <h2>Choose a plan that fits your home</h2>
+      <p>Whether you're streaming, studying, or working from home — FYWY has a simple plan for you.</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card fade-in">
+        <div class="plan-badge">Starter</div>
+        <h3>Daily Essentials - Wifi</h3>
+        <div class="plan-price">$2,500<span>/month</span></div>
+        <ul class="plan-features">
+           <li>5 MB/S</li>
+          <li>Perfect for browsing & email</li>
+          <li>Basic support</li>
+          <li>No contract required</li>
+        </ul>
+        <a href="#apply" class="btn btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+      </div>
+
+      <div class="plan-card fade-in delay-1">
+        <div class="plan-badge" style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1E2A2A;">Popular</div>
+        <h3>Cable & Internet</h3>
+        <div class="plan-price">$4,000<span>/month</span></div>
+        <ul class="plan-features">
+          <li>Cable + Basic Internet Plan (upgrades if desired)</li>
+          <li>Great for multiple devices</li>
+          <li>Smooth HD streaming</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#apply" class="btn btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+      </div>
+
+      <div class="plan-card fade-in delay-2">
+        <div class="plan-badge">Max</div>
+        <h3>Heavy Use & Work - Wifi</h3>
+        <div class="plan-price">$8,500<span>/month</span></div>
+        <ul class="plan-features">
+          <li>100 MB/S</li>
+          <li>Fastest speeds available</li>
+          <li>Gaming & 4K streaming</li>
+          <li>Advanced WiFi system</li>
+        </ul>
+        <a href="#apply" class="btn btn-primary" style="width: 100%; text-align: center;">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM + SETUP SECTION -->
+  <section class="team-setup-section">
+    <div class="team-setup-container">
+      
+      <!-- Section Intro (Optional - you can remove this) -->
+      <div class="section-intro">
+        <h2>How we <span>get you connected</span></h2>
+        <p>Meet the team and understand the process — no surprises, just honest service.</p>
+      </div>
+
+      <!-- Two Column Grid -->
+      <div class="two-column-grid">
+        
+        <!-- LEFT: TEAM CARD -->
+       <div class="team-card">
+          <div class="team-image">
+        <img src="DSC_0027.jpg" alt="technicians">
+      </div>
+          <div class="team-content">
+            <h3>Your Local Tech Team</h3>
+            <p>Our installation and support technicians are certified professionals who live right here in your community. They know the area, they know the infrastructure, and they know how to get you connected fast.</p>
+            <div class="team-badges">
+              <span class="badge">✓ Certified Installers</span>
+              <span class="badge">✓ Same-Day Service</span>
+              <span class="badge">✓ Local Knowledge</span>
+              <span class="badge">✓ Friendly Support</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: SETUP PROCESS -->
+        <div class="setup-card">
+          <h3>The Process</h3>
+          <ol class="setup-steps">
+            <li><strong>You apply online or call us.</strong> We check if we can reach your address with our current setup.</li>
+            <li><strong>We schedule installation.</strong> Usually takes about 14 working days depending on demand and location.</li>
+            <li><strong>Technician comes out.</strong> Runs cable, sets up equipment, makes sure everything works before leaving.</li>
+            <li><strong>You're online.</strong> That's it. If something breaks later, we come fix it.</li>
+          </ol>
+
+          <div class="timeline">
+            <h4>Typical Timeline</h4>
+            <div class="timeline-item">
+              <div class="timeline-day">Day 1</div>
+              <div class="timeline-desc">Submit application + payment</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-day">Day 2-3</div>
+              <div class="timeline-desc">We confirm coverage & schedule install</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-day">Day 14</div>
+              <div class="timeline-desc">Technician arrives (usually)</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-day">Same Day</div>
+              <div class="timeline-desc">Setup complete, you're online</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SMALL IMAGE LEFT, TEXT RIGHT -->
+  <section class="image-section alt-bg">
+    <div class="image-content small-left">
+      <div class="image-box fade-in">
+        <img src="./IMG_6114.jpg" alt="Family using WiFi at home">
+      </div>
+      <div class="text-box fade-in delay-1">
+        <h3>Made for real life at home.</h3>
+        <p>From movie nights to homework to working from home — FYWY is built to handle the way your household actually uses the internet.</p>
+        <ul>
+          <li>Smooth streaming and video calls</li>
+          <li>Reliable connection across multiple rooms</li>
+          <li>Plans that match your daily needs</li>
+          <li>Equipment included in every plan</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">FYWY</div>
+        <p style="opacity: 0.75; margin-top: 1rem; line-height: 1.7;">Reliable internet and cable service focused on local communities.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#plans">Internet Plans</a></li>
+          <li><a href="index.html#plans">Cable TV</a></li>
+          <li><a href="#coverage">Coverage Map</a></li>
+          <li><a href="#apply">Apply Online</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Pay Bill</a></li>
+          <li><a href="#">Service Status</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About FYWY</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2024 FYWY WiFi & Cable. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Auto-hide header on scroll down, show on scroll up
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', function() {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scrolling down
+        header.classList.add('hidden');
+      } else {
+        // Scrolling up
+        header.classList.remove('hidden');
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+  </script>
+
+</body>
+</html>

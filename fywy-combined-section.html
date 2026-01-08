@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FYWY - Team & Setup Section</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&family=Space+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green: #3D5A58;
+      --green-bright: #4FAF9A;
+      --navy: #1E2A2A;
+      --light-bg: #F5F5F5;
+      --dark-text: #1E2A2A;
+      --white: #ffffff;
+    }
+
+    body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: url('DSC_0086.jpg') center/cover no-repeat fixed;
+  color: var(--dark-text);
+  line-height: 1.6;
+  padding: 0;  /* ← Changed from 2rem */
+}
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* COMBINED TEAM + SETUP SECTION */
+   .team-setup-section {
+  padding: 5rem 2rem;
+  background: transparent;
+}
+
+.team-setup-container {
+  max-width: 1600px;  /* Changed from 1200px */
+  margin: 0 auto;
+}
+
+    .section-intro {
+      max-width: 700px;
+      margin-bottom: 4rem;
+    }
+
+.section-intro h2 {
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: var(--white);  /* ← Changed to white */
+  margin-bottom: 1.5rem;
+  line-height: 1.05;
+}
+
+.section-intro h2 span {
+  color: var(--green-bright);  /* ← Stays green */
+}
+
+.section-intro p {
+  font-size: 1.15rem;
+  color: var(--white);  /* ← Changed to white */
+  line-height: 1.8;
+}
+
+
+ .two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: none;  /* Remove the 1400px limit */
+  margin: 0 auto;
+}
+
+    /* LEFT BOX - TEAM CARD */
+    .team-card {
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+      border: 2px solid rgba(30, 42, 42, 0.08);
+    }
+
+.team-image {
+  width: 100%;
+  height: 380px;  /* ← Much taller now! */
+  background: linear-gradient(135deg, var(--green) 0%, var(--navy) 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-emoji {
+  font-size: 9rem;  /* ← Bigger to match */
+  opacity: 0.3;
+}
+
+    .team-content {
+  padding: 1.5rem 2rem;  /* ← Less vertical padding */
+}
+
+    .team-content h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .team-content p {
+      font-size: 1rem;
+      color: rgba(30, 42, 42, 0.75);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .team-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .badge {
+      background: rgba(61, 90, 88, 0.1);
+      color: var(--green);
+      padding: 0.6rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* RIGHT BOX - SETUP PROCESS */
+   .setup-card {
+  background: var(--navy);
+  border-radius: 24px;
+  padding: 1.75rem 2rem;  /* ← Less vertical padding */
+  color: var(--white);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+}
+    .setup-card h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--green-bright);
+    }
+
+    .setup-steps {
+      list-style: none;
+      counter-reset: step-counter;
+      margin-bottom: 2.5rem;
+    }
+
+  .setup-steps li {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.9);
+}
+
+    .setup-steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--green-bright);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: var(--navy);
+      font-size: 1rem;
+    }
+
+    .setup-steps strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+ .timeline {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+    .timeline h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--green-bright);
+      margin-bottom: 1.25rem;
+    }
+
+.timeline-item {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+    .timeline-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .timeline-day {
+      font-weight: 700;
+      color: var(--green-bright);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .timeline-desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 968px) {
+      .two-column-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TEAM + SETUP SECTION -->
+  <section class="team-setup-section">
+    <div class="team-setup-container">
+      
+      <!-- Section Intro (Optional - you can remove this) -->
+      <div class="section-intro">
+        <h2>How we <span>get you connected</span></h2>
+        <p>Meet the team and understand the process — no surprises, just honest service.</p>
+      </div>
+
+      <!-- Two Column Grid -->
+      <div class="two-column-grid">
+        
+        <!-- LEFT: TEAM CARD -->
+        <div class="team-card">
+          <div class="team-image">
+            <div class="team-emoji">👷‍♂️</div>
+          </div>
+          <div class="team-content">
+            <h3>Your Local Tech Team</h3>
+            <p>Our installation and support technicians are certified professionals who live right here in your community. They know the area, they know the infrastructure, and they know how to get you connected fast.</p>
+            <div class="team-badges">
+              <span class="badge">✓ Certified Installers</span>
+              <span class="badge">✓ Same-Day Service</span>
+              <span class="badge">✓ Local Knowledge</span>
+              <span class="badge">✓ Friendly Support</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: SETUP PROCESS -->
+        <div class="setup-card">
+          <h3>The Process</h3>
+          <ol class="setup-steps">
+            <li><strong>You apply online or call us.</strong> We check if we can reach your address with our current setup.</li>
+            <li><strong>We schedule installation.</strong> Usually takes about 14 working days depending on demand and location.</li>
+            <li><strong>Technician comes out.</strong> Runs cable, sets up equipment, makes sure everything works before leaving.</li>
+            <li><strong>You're online.</strong> That's it. If something breaks later, we come fix it.</li>
+          </ol>
+
+          <div class="timeline">
+            <h4>Typical Timeline</h4>
+            <div class="timeline-item">
+              <div class="timeline-day">Day 1</div>
+              <div class="timeline-desc">Submit application + payment</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-day">Day 2-3</div>
+              <div class="timeline-desc">We confirm coverage & schedule install</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-day">Day 14</div>
+              <div class="timeline-desc">Technician arrives (usually)</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-day">Same Day</div>
+              <div class="timeline-desc">Setup complete, you're online</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
