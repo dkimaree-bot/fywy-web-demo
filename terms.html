@@ -209,17 +209,17 @@
       animation: pulse 6s ease-in-out infinite;
     }
 
-.terms-box {
-  max-width: 1500px;      /* ← Changed from 900px */
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 32px;
-  padding: 2.5rem 2rem;   /* ← Changed from 4rem 3rem */
-  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  border: 1px solid rgba(61, 90, 88, 0.1);
-  position: relative;
-}
+    .terms-box {
+      max-width: 1500px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 32px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      border: 1px solid rgba(61, 90, 88, 0.1);
+      position: relative;
+    }
 
     .terms-box h2 {
       font-size: 2rem;
@@ -359,6 +359,106 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* --- TERMS NAV (TABS/SIDEBAR) --- */
+    .terms-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .terms-nav {
+      position: sticky;
+      top: 90px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(61, 90, 88, 0.12);
+      border-radius: 24px;
+      padding: 1.25rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    }
+
+    .terms-nav h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .terms-nav p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      color: rgba(30, 42, 42, 0.75);
+    }
+
+    .terms-nav button {
+      width: 100%;
+      text-align: left;
+      border: 1px solid rgba(61, 90, 88, 0.14);
+      background: rgba(245,245,245,0.6);
+      border-radius: 16px;
+      padding: 0.9rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--navy);
+      transition: 0.25s ease;
+      margin-bottom: 0.6rem;
+    }
+
+    .terms-nav button small {
+      display: block;
+      font-weight: 600;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+
+    .terms-nav button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(79, 175, 154, 0.45);
+    }
+
+    .terms-nav button.active {
+      background: linear-gradient(135deg, rgba(79, 175, 154, 0.22), rgba(61, 90, 88, 0.10));
+      border-color: rgba(79, 175, 154, 0.70);
+    }
+
+    .terms-panels {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 32px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      border: 1px solid rgba(61, 90, 88, 0.1);
+    }
+
+    .terms-panel {
+      display: none;
+    }
+
+    .terms-panel.active {
+      display: block;
+    }
+
+    .panel-intro {
+      background: rgba(79, 175, 154, 0.10);
+      border: 1px solid rgba(79, 175, 154, 0.25);
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+      margin: 1rem 0 1.5rem;
+      color: rgba(30, 42, 42, 0.85);
+    }
+
+    @media (max-width: 968px) {
+      .terms-layout {
+        grid-template-columns: 1fr;
+      }
+      .terms-nav {
+        position: relative;
+        top: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -367,8 +467,8 @@
   <header>
     <nav>
       <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
-  <img src="your-logo.png" alt="FYWY Logo" style="height: 50px; width: auto;">
-</a>
+        <img src="./images/your-logo.png" alt="FYWY Logo" style="height: 50px; width: auto;">
+      </a>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="plans.html">Plans</a>
@@ -390,74 +490,237 @@
   <!-- CONTENT -->
   <section class="terms-content">
     <div class="terms-box">
-      <h2>Service Agreement</h2>
-      
-      <p>Welcome to FYWY WiFi & Cable. By using our services, you agree to comply with and be bound by the following terms and conditions. Please review them carefully.</p>
+      <div class="terms-layout">
 
-      <h3>1. Installation & Installation Fees</h3>
-      <p><strong>Installation fees are non-refundable.</strong> The installation cost includes up to 150 feet of cable from the main road or main utility pole. Cable installation beyond 150 feet will attract an additional cost of <strong>$35.00 per foot</strong> (plus additional accessories used).</p>
-      <p><strong>Important:</strong> On the day of installation, you must present the ID that is listed on your application form to the technician.</p>
+        <!-- LEFT NAV -->
+        <aside class="terms-nav" aria-label="Terms navigation">
+          <h4>Explore the policies</h4>
+          <p>Click a section to read. Using FYWY means you agree to all policies here.</p>
 
-      <h3>2. Equipment & Set Top Box</h3>
-      <p>Each installation includes <strong>one set top box</strong>. This set top box remains the property of FYWY and is provided under a rental agreement with a monthly rental fee.</p>
-      
-      <p><strong>Additional Set Top Boxes:</strong></p>
-      <ul>
-        <li><strong>Purchase Option:</strong> $7,000 (one-time payment) + $300 monthly maintenance fee</li>
-        <li><strong>Rental Option:</strong> Monthly plan cost + $1,000 additional monthly rental fee</li>
-      </ul>
+          <button class="tab-btn active" data-tab="overview">
+            Overview
+            <small>Agreement + quick summary</small>
+          </button>
 
-      <p><strong>Customer Responsibility:</strong> Once equipment is placed on your premises, you are responsible for FYWY's property and will be held liable for any damage to our equipment.</p>
+          <button class="tab-btn" data-tab="service">
+            Terms of Service
+            <small>Service rules + liability</small>
+          </button>
 
-      <h3>3. Payment Terms</h3>
-      <p>Payment is due <strong>on or before the 30th of each month</strong> (or at the end of the month in the case of February).</p>
-      <ul>
-        <li>Service will be terminated if monthly fees are outstanding for more than <strong>two months</strong></li>
-        <li>Late payments may result in service disconnection</li>
-      </ul>
+          <button class="tab-btn" data-tab="billing">
+            Billing & Payments
+            <small>Due dates + late fees</small>
+          </button>
 
-      <h3>4. Service Disconnection & Equipment Return</h3>
-      <p><strong>If service is disconnected:</strong></p>
-      <ul>
-        <li>The set top box must be returned to our office immediately</li>
-        <li>If the box is not returned, the rental fee ($300/month) will continue to be charged to your account</li>
-        <li>If service has been disconnected for <strong>six months</strong>, FYWY will remove all equipment from your premises</li>
-      </ul>
+          <button class="tab-btn" data-tab="equipment">
+            Equipment & Installation
+            <small>Set top box + installation</small>
+          </button>
 
-      <h3>5. Service Restrictions</h3>
-      <p><strong>Sub-letting is prohibited:</strong> Sharing or sub-letting service to adjoining premises is illegal and breaks our policy. Any customer found in breach will be penalized and may face immediate service termination.</p>
+          <button class="tab-btn" data-tab="aup">
+            Acceptable Use Policy
+            <small>No sharing, abuse, illegal use</small>
+          </button>
 
-      <h3>6. Acceptable Use Policy</h3>
-      <p>Customers must use our services lawfully and must not:</p>
-      <ul>
-        <li>Share service with neighboring properties</li>
-        <li>Use excessive bandwidth that impacts other customers</li>
-        <li>Engage in illegal activities or copyright infringement</li>
-        <li>Tamper with or attempt to breach network security</li>
-      </ul>
+          <button class="tab-btn" data-tab="privacy">
+            Privacy Policy
+            <small>Data we collect + protection</small>
+          </button>
+        </aside>
 
-      <h3>7. Service Quality</h3>
-      <p>We strive to maintain reliable service for all customers. However, service may be temporarily interrupted for maintenance, upgrades, or circumstances beyond our control including:</p>
-      <ul>
-        <li>Natural disasters or severe weather</li>
-        <li>Power outages</li>
-        <li>Customer equipment failure</li>
-        <li>Third-party network issues</li>
-      </ul>
+        <!-- RIGHT PANELS -->
+        <div class="terms-panels">
 
-      <h3>8. Privacy & Data</h3>
-      <p>FYWY respects your privacy and handles your personal information in accordance with applicable laws. We do not sell your personal data to third parties.</p>
+          <!-- OVERVIEW -->
+          <div class="terms-panel active" id="overview">
+            <h2>Terms & Conditions</h2>
+            <div class="panel-intro">
+              <strong>By using FYWY services</strong> (internet, cable TV, installation, support, website services),
+              you agree to these Terms & Conditions and the policies listed in the menu.
+            </div>
 
-      <h3>9. Technical Support</h3>
-      <p>Technical support is available to all customers. We aim to resolve all service issues promptly and professionally.</p>
+            <p>This page explains the rules for using FYWY WiFi & Cable, including payments, equipment, acceptable use, and privacy.</p>
 
-      <h3>10. Changes to Terms & Services</h3>
-      <p><strong>FYWY conditions may change at any point, including fees and services, without prior notice.</strong> FYWY may notify you of changes by text, call, email, or any other reasonable method. Subject to FYWY's right to make changes, no other statements (written or verbal) will modify this agreement.</p>
+            <ul>
+              <li><strong>Who this applies to:</strong> anyone who applies for, uses, or pays for FYWY services.</li>
+              <li><strong>Updates:</strong> we may update these policies (see “Changes to Terms”).</li>
+              <li><strong>Questions:</strong> contact FYWY support if anything is unclear.</li>
+            </ul>
 
-      <h3>11. Limitation of Liability</h3>
-      <p>FYWY's liability is limited to the amount paid for services in the month the issue occurred. We are not liable for indirect, incidental, or consequential damages resulting from service interruptions.</p>
+            <p class="last-updated">Last Updated: December 2024</p>
+          </div>
 
-      <p class="last-updated">Last Updated: December 2024</p>
+          <!-- TERMS OF SERVICE -->
+          <div class="terms-panel" id="service">
+            <h2>Terms of Service</h2>
+            <p>These terms govern the delivery and use of FYWY WiFi & Cable services.</p>
+
+            <h3>Service Quality</h3>
+            <p>We strive to maintain reliable service. Temporary interruptions may occur for maintenance, upgrades, or circumstances beyond our control, including:</p>
+            <ul>
+              <li>Natural disasters or severe weather</li>
+              <li>Power outages</li>
+              <li>Customer equipment failure</li>
+              <li>Third-party network issues</li>
+            </ul>
+
+            <h3>Technical Support</h3>
+            <p>Technical support is available to all customers. We aim to resolve service issues promptly and professionally.</p>
+
+            <h3>Account Responsibility</h3>
+            <p>Customers are responsible for providing accurate, current, and complete information when applying for and using FYWY services.</p>
+            <p>At this time, updates to account information must be made by contacting FYWY customer support. FYWY may rely on the most recent contact details provided by the customer for notices, billing, and service-related communications.</p>
+            <p>Customers are responsible for all activity conducted through their service connection or account.</p>
+
+            <h3>Suspension or Termination of Service</h3>
+            <p>FYWY reserves the right to suspend or terminate service, with or without notice, if a customer:</p>
+            <ul>
+              <li>Provides false or misleading information</li>
+              <li>Engages in fraudulent activity</li>
+              <li>Tampers with, damages, or interferes with FYWY equipment or network infrastructure</li>
+              <li>Uses the service for illegal activities</li>
+              <li>Engages in repeated or serious violations of the Acceptable Use Policy</li>
+              <li>Uses the service in a way that negatively impacts other customers or network performance</li>
+            </ul>
+            <p>FYWY is not responsible for illegal activities carried out by customers using the service. Where damage occurs to FYWY property or infrastructure, the customer may be charged for repair or replacement costs.</p>
+
+            <h3>Changes to Terms & Services</h3>
+            <p><strong>FYWY conditions may change at any point</strong>, including fees and services, without prior notice. We may notify you by text, call, email, or any other reasonable method. Subject to FYWY’s right to make changes, no other statements (written or verbal) will modify this agreement.</p>
+
+            <h3>Limitation of Liability</h3>
+            <p>FYWY’s liability is limited to the amount paid for services in the month the issue occurred. We are not liable for indirect, incidental, or consequential damages resulting from service interruptions.</p>
+
+            <h3>Governing Law & Dispute Resolution</h3>
+            <p>These Terms & Conditions are governed by and interpreted in accordance with the laws of <strong>Jamaica</strong>.</p>
+            <p>In the event of a dispute, both parties agree to first attempt to resolve the matter through informal discussion and, where appropriate, mediation. Informal discussions or mediation may be conducted remotely.</p>
+            <p>If a dispute cannot be resolved through these means, either party may pursue legal action through the courts of <strong>Jamaica</strong>, which shall have exclusive jurisdiction.</p>
+
+            <p class="last-updated">Last Updated: December 2024</p>
+          </div>
+
+          <!-- BILLING -->
+          <div class="terms-panel" id="billing">
+            <h2>Billing & Payments Policy</h2>
+
+            <h3>Payment Due Date</h3>
+            <p>Payment is due <strong>on or before the 30th of each month</strong> (or at the end of the month in February).</p>
+
+            <h3>Late / Outstanding Balances</h3>
+            <ul>
+              <li>Late payments may result in service disconnection.</li>
+              <li>Service may be terminated if monthly fees are outstanding for more than <strong>two months</strong>.</li>
+            </ul>
+
+            <h3>Installation Fees</h3>
+            <p><strong>Installation fees are non-refundable.</strong></p>
+
+            <h3>Refunds & Service Credits</h3>
+            <p>Refunds or service credits for outages or service issues are handled on a <strong>case-by-case basis</strong>.</p>
+            <p>FYWY does not guarantee automatic refunds for service interruptions. Any refunds or credits granted are at FYWY’s discretion and may depend on the nature, duration, and cause of the issue.</p>
+
+            <p class="last-updated">Last Updated: December 2024</p>
+          </div>
+
+          <!-- EQUIPMENT -->
+          <div class="terms-panel" id="equipment">
+            <h2>Equipment & Installation Policy</h2>
+
+            <h3>Installation</h3>
+            <p>The installation cost includes up to <strong>150 feet of cable</strong> from the main road or main utility pole. Cable installation beyond 150 feet attracts an additional cost of <strong>$35.00 per foot</strong> (plus accessories used).</p>
+
+            <p><strong>Important:</strong> On the day of installation, you must present the ID listed on your application form to the technician.</p>
+
+            <h3>Set Top Box</h3>
+            <p>Each installation includes <strong>one set top box</strong>. This set top box remains the property of FYWY and is provided under a rental agreement with a monthly rental fee.</p>
+
+            <h3>Additional Set Top Boxes</h3>
+            <ul>
+              <li><strong>Purchase Option:</strong> $7,000 (one-time payment) + $300 monthly maintenance fee</li>
+              <li><strong>Rental Option:</strong> Monthly plan cost + $1,000 additional monthly rental fee</li>
+            </ul>
+
+            <h3>Customer Responsibility</h3>
+            <p>Once equipment is placed on your premises, you are responsible for FYWY’s property and may be held liable for damage, loss, or tampering.</p>
+
+            <h3>Disconnection & Equipment Return</h3>
+            <ul>
+              <li>The set top box must be returned to our office immediately after disconnection.</li>
+              <li>If the box is not returned, the rental fee ($300/month) will continue to be charged.</li>
+              <li>If service is disconnected for <strong>six months</strong>, FYWY may remove equipment from your premises.</li>
+            </ul>
+
+            <p class="last-updated">Last Updated: December 2024</p>
+          </div>
+
+          <!-- AUP -->
+          <div class="terms-panel" id="aup">
+            <h2>Acceptable Use Policy</h2>
+
+            <h3>Service Restrictions</h3>
+            <p><strong>Sub-letting is prohibited:</strong> Sharing or sub-letting service to adjoining premises is prohibited and breaks our policy. Any customer found in breach may be penalized and may face immediate service termination.</p>
+
+            <h3>Customers must not:</h3>
+            <ul>
+              <li>Share service with neighboring properties</li>
+              <li>Use excessive bandwidth in a way that significantly impacts other customers</li>
+              <li>Engage in illegal activities or copyright infringement</li>
+              <li>Tamper with or attempt to breach network security</li>
+            </ul>
+
+            <p class="last-updated">Last Updated: December 2024</p>
+          </div>
+
+          <!-- PRIVACY -->
+          <div class="terms-panel" id="privacy">
+            <h2>Privacy Policy</h2>
+            <div class="panel-intro">
+              This section explains what information FYWY collects, why we collect it, and how we protect it.
+            </div>
+
+            <h3>Information We Collect</h3>
+            <ul>
+              <li>Contact details (name, phone number, email address)</li>
+              <li>Service address / installation address</li>
+              <li>Government-issued ID and ID type (for verification and fraud prevention)</li>
+              <li>Billing records and payment confirmations</li>
+              <li>Basic service usage data for troubleshooting and network management</li>
+            </ul>
+
+            <h3>How We Use Information</h3>
+            <ul>
+              <li>To install and provide services</li>
+              <li>To verify identity, prevent fraud, and confirm eligibility (including age requirements)</li>
+              <li>To bill and process payments</li>
+              <li>To provide technical support and service updates</li>
+              <li>To improve network performance and reliability</li>
+            </ul>
+
+            <h3>Data Sharing</h3>
+            <p>Personal information may be shared with FYWY technicians and customer service representatives solely for the purpose of installing, maintaining, and supporting services.</p>
+            <p>Payment information entered online is processed through secure third-party payment systems. FYWY does not store full card numbers or card verification values (CVV).</p>
+            <p>FYWY does not sell customer personal data.</p>
+
+            <h3>Security</h3>
+            <p>We take reasonable steps to protect customer information. However, no method of storage or transmission is 100% secure, and we cannot guarantee absolute security.</p>
+
+            <h3>Data Retention</h3>
+            <p>Customer information is retained for as long as the customer maintains an active service account, or as otherwise required for business or legal purposes.</p>
+
+            <h3>Communications</h3>
+            <p>By using FYWY services, customers consent to receive service-related communications such as billing notices, service updates, and outage notifications.</p>
+            <p>FYWY does not currently send marketing or promotional messages. If marketing communications are introduced in the future, customers will have the option to opt out while continuing to receive essential service-related notices.</p>
+
+            <h3>Data Breach Notification</h3>
+            <p>In the event of a data breach involving personal information, FYWY will notify affected customers where required by applicable law.</p>
+
+            <h3>Your Choices</h3>
+            <p>You may request access to, correction of, or deletion of your personal information where applicable. Requests can be made through FYWY support.</p>
+
+            <p class="last-updated">Last Updated: December 2024</p>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
@@ -500,6 +763,27 @@
       © 2024 FYWY WiFi & Cable. All rights reserved.
     </div>
   </footer>
+
+  <script>
+    const buttons = document.querySelectorAll(".tab-btn");
+    const panels = document.querySelectorAll(".terms-panel");
+
+    function activateTab(tabId, pushHash = true) {
+      buttons.forEach(btn => btn.classList.toggle("active", btn.dataset.tab === tabId));
+      panels.forEach(panel => panel.classList.toggle("active", panel.id === tabId));
+      if (pushHash) history.replaceState(null, "", `#${tabId}`);
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => activateTab(btn.dataset.tab));
+    });
+
+    const initial = window.location.hash.replace("#", "");
+    if (initial) {
+      const exists = Array.from(panels).some(p => p.id === initial);
+      if (exists) activateTab(initial, false);
+    }
+  </script>
 
 </body>
 </html>
