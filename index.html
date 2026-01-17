@@ -283,6 +283,55 @@
       flex-wrap: wrap;
     }
 
+
+    #coverageResult {
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: var(--white);
+  line-height: 1.5;
+}
+
+.coverage-badge {
+  display: inline-block;
+  font-weight: 800;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.badge-yes { background: rgba(79,175,154,0.25); border: 1px solid rgba(79,175,154,0.6); }
+.badge-maybe { background: rgba(255,215,0,0.18); border: 1px solid rgba(255,215,0,0.55); }
+.badge-no { background: rgba(255,90,90,0.18); border: 1px solid rgba(255,90,90,0.55); }
+
+.coverage-actions {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.coverage-actions a {
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+  display: inline-block;
+}
+
+.coverage-actions .action-primary {
+  background: linear-gradient(135deg, var(--green-bright) 0%, #5fd4b8 100%);
+  color: var(--navy);
+}
+
+.coverage-actions .action-outline {
+  border: 2px solid rgba(255,255,255,0.7);
+  color: var(--white);
+}
+
     /* AVAILABILITY CHECKER */
     .availability-box {
       background: rgba(255, 255, 255, 0.1);
@@ -342,14 +391,16 @@
       text-align: center;
     }
 
-    .quick-link-item {
-      background: rgba(255,255,255,0.05);
-      padding: 1.5rem 2rem;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
+.quick-link-item {
+  background: rgba(255,255,255,0.05);
+  padding: 0;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 80px;  /* ← ADD THIS - gives parent a height */
+  display: flex;     /* ← ADD THIS */
+}
 
     .quick-link-item:hover {
       background: rgba(255,255,255,0.08);
@@ -357,13 +408,19 @@
       transform: translateY(-5px);
     }
 
-    .quick-link-item a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.05rem;
-      display: block;
-    }
+.quick-link-item a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  display: flex;           /* ← Changed from block */
+  align-items: center;     /* ← ADD THIS */
+  justify-content: center; /* ← ADD THIS */
+  width: 100%;
+  height: 100%;
+  min-height: 60px;        /* ← ADD THIS - gives it actual height */
+  padding: 1.5rem 2rem;
+}
 
  /* BENEFITS SECTION */
 .benefits {
@@ -943,43 +1000,7 @@
       font-size: 0.95rem;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 968px) {
-      .hero-content {
-        grid-template-columns: 1fr;
-      }
 
-      .quick-links-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .benefits-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .plans-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .image-content.small-left,
-      .image-content.reverse {
-        grid-template-columns: 1fr;
-      }
-
-      .image-overlay-text {
-        position: static;
-        transform: none;
-        margin-top: 2rem;
-      }
-
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .nav-links {
-        display: none;
-      }
-    }
 
     @media (max-width: 600px) {
       .quick-links-container {
@@ -994,6 +1015,73 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-width: 968px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-links-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-content.small-left,
+  .image-content.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .image-overlay-text {
+    position: static;
+    transform: none;
+    margin-top: 2rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  /* ADD THESE NEW RULES FOR THE TEAM SECTION */
+  .two-column-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .team-image {
+    height: 250px;
+  }
+
+  .setup-steps li {
+    font-size: 0.9rem;
+    padding-left: 2.2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .setup-steps li::before {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  .timeline {
+    padding: 1rem;
+  }
+
+  .timeline h4 {
+    font-size: 1.1rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -1009,7 +1097,7 @@
 <a href="terms.html">Terms and Conditions</a>
         <a href="#support">Payment</a>
         <a href="contact.html">Contact</a>
-        <a href="#apply" class="btn btn-primary">Apply Now</a>
+        <a href="apply.html" class="btn btn-primary">Apply Now</a>
       </div>
     </nav>
   </header>
@@ -1021,15 +1109,23 @@
         <h1>Strong, steady <span>WiFi & Cable</span>, built for our community.</h1>
         <p>Fast, reliable service with local support and clear pricing. Get connected without the stress of confusing contracts or hidden fees.</p>
         <div class="hero-ctas">
-          <a href="#apply" class="btn btn-primary">Apply Now</a>
-          <a href="#coverage" class="btn btn-outline">Make Payment</a>
+          <a href="apply.html" class="btn btn-primary">Apply Now</a>
+          <a href="#payment" class="btn btn-outline">Make Payment</a>
         </div>
       </div>
-      <div class="availability-box fade-in delay-1">
-        <h3>Check Coverage</h3>
-        <input type="text" placeholder="Enter your address">
-        <button class="btn btn-primary">Search</button>
-      </div>
+<div class="availability-box fade-in delay-1" id="coverageChecker">
+  <h3>Check Coverage</h3>
+
+  <input id="coverageInput" type="text" placeholder="Enter your community or area (e.g., Greenvale, Porus)">
+  <button id="coverageBtn" class="btn btn-primary" type="button">Search</button>
+
+  <div id="coverageResult" style="margin-top: 1rem; display:none;"></div>
+
+  <p style="margin-top: 1rem; color: rgba(255,255,255,0.75); font-size: 0.95rem;">
+    Coverage depends on distance and pole route. This checker gives a quick estimate.
+  </p>
+</div>
+
     </div>
   </section>
 
@@ -1037,7 +1133,8 @@
   <section class="quick-links-bar">
     <div class="quick-links-container">
       <div class="quick-link-item fade-in">
-        <a href="#payment">Check Coverage</a>
+        <a href="#coverageChecker">Check Coverage</a>
+
       </div>
       <div class="quick-link-item fade-in delay-2">
         <a href="plans.html">Services</a>
@@ -1191,7 +1288,7 @@
   <section class="image-section alt-bg">
     <div class="image-content small-left">
       <div class="image-box fade-in">
-        <img src="./IMG_6114.jpg" alt="Family using WiFi at home">
+        <img src="./alecphoto.png" alt="Family using WiFi at home">
       </div>
       <div class="text-box fade-in delay-1">
         <h3>Made for real life at home.</h3>
@@ -1247,25 +1344,191 @@
     </div>
   </footer>
 
-  <script>
-    // Auto-hide header on scroll down, show on scroll up
-    let lastScrollTop = 0;
-    const header = document.querySelector('header');
-    
-    window.addEventListener('scroll', function() {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (scrollTop > lastScrollTop && scrollTop > 100) {
-        // Scrolling down
-        header.classList.add('hidden');
-      } else {
-        // Scrolling up
-        header.classList.remove('hidden');
-      }
-      
-      lastScrollTop = scrollTop;
-    });
-  </script>
+<script>
+  // Auto-hide header on scroll down, show on scroll up
+  let lastScrollTop = 0;
+  const header = document.querySelector('header');
+
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      header.classList.add('hidden');
+    } else {
+      header.classList.remove('hidden');
+    }
+
+    lastScrollTop = scrollTop;
+  });
+
+  // ----------------------------
+  // Coverage Checker (3-state)
+  // ----------------------------
+  const coverageInput = document.getElementById('coverageInput');
+  const coverageBtn = document.getElementById('coverageBtn');
+  const coverageResult = document.getElementById('coverageResult');
+
+  const NOT_AVAILABLE = [
+    "porus",
+    "greenvale",
+    "hatsfield",
+    "royal flat",
+    "bellefield",
+    "cumberland",
+    "mel rose",
+    "lincoln",
+    "california"
+  ];
+
+  const LIKELY_AVAILABLE = [
+    "mile gully",
+    "christiana",
+    "plowden",
+    "malton",
+    "devon",
+    "spaldings",
+    "restore",
+    "cross keys",
+    "rose hill",
+    "blenheim",
+    "hillside",
+    "albion",
+    "richmond",
+    "georges valley",
+    "ward avenue",
+    "caledonia road",
+    "perch road",
+    "mayday",
+    "old england",
+    "pusey hill",
+    "patrick town",
+    "victoria town",
+    "lancaster",
+    "pratville",
+    "spur tree",
+    "newport",
+    "berry hill",
+    "lamb town",
+    "cedar grove",
+    "greenstreet",
+    "villa road",
+    "knockpatrick"
+  ];
+
+  const VERIFY_NEEDED = [
+    "may pen",
+    "mandeville",
+    "hanover",
+    "kellits"
+  ];
+
+  const SERVED_PARISHES = [
+    "manchester",
+    "clarendon",
+    "hanover"
+  ];
+
+  function normalize(str) {
+    return (str || "")
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ");
+  }
+
+  function includesAny(haystack, list) {
+    return list.some(item => haystack.includes(item));
+  }
+
+  function renderResult(type, areaLabel) {
+    const safeArea = areaLabel ? `“${areaLabel}”` : "that area";
+
+    if (type === "no") {
+      coverageResult.innerHTML = `
+        <div class="coverage-badge badge-no">❌ Not available yet</div>
+        <div>Sorry — we don’t currently offer service in ${safeArea}.</div>
+        <div class="coverage-actions">
+          <a class="action-outline" href="contact.html">Ask about nearby areas</a>
+          <a class="action-outline" href="apply.html">Join waitlist / request expansion</a>
+        </div>
+      `;
+    }
+
+    if (type === "maybe") {
+      coverageResult.innerHTML = `
+        <div class="coverage-badge badge-maybe">⚠️ Needs verification</div>
+        <div>We may be able to service ${safeArea}, but it depends on distance and pole route.</div>
+        <div style="margin-top:0.5rem; opacity:0.9;">Best next step: send your location pin on WhatsApp or apply and we’ll confirm.</div>
+        <div class="coverage-actions">
+          <a class="action-primary" href="apply.html">Apply to confirm</a>
+          <a class="action-outline" href="contact.html">WhatsApp us your location</a>
+        </div>
+      `;
+    }
+
+    if (type === "yes") {
+      coverageResult.innerHTML = `
+        <div class="coverage-badge badge-yes">✅ Likely available</div>
+        <div>${safeArea} looks like it’s within our coverage zones. Apply and we’ll confirm the route.</div>
+        <div class="coverage-actions">
+          <a class="action-primary" href="apply.html">Apply now</a>
+          <a class="action-outline" href="contact.html">Still unsure? Message us</a>
+        </div>
+      `;
+    }
+
+    coverageResult.style.display = "block";
+  }
+
+  function toTitleCase(str) {
+  return (str || "")
+    .split(" ")
+    .filter(Boolean)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
+
+  function runCoverageCheck() {
+    const raw = coverageInput.value;
+    const q = normalize(raw);
+
+    if (!q) {
+      coverageResult.style.display = "block";
+      coverageResult.innerHTML = `
+        <div class="coverage-badge badge-maybe">Type an area</div>
+        <div>Enter your community, district, or town name to check.</div>
+      `;
+      return;
+    }
+
+    if (includesAny(q, NOT_AVAILABLE)) {
+      renderResult("no", toTitleCase(q));
+      return;
+    }
+
+    if (includesAny(q, LIKELY_AVAILABLE)) {
+      renderResult("yes", toTitleCase(q));
+      return;
+    }
+
+    if (includesAny(q, VERIFY_NEEDED) || includesAny(q, SERVED_PARISHES)) {
+      renderResult("maybe", toTitleCase(q));
+      return;
+    }
+
+    renderResult("maybe", toTitleCase(q));
+  }
+
+  // ✅ Attach listeners OUTSIDE the function
+  coverageBtn.addEventListener("click", runCoverageCheck);
+  coverageInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") runCoverageCheck();
+  });
+</script>
+
+
+
+  
 
 </body>
 </html>
